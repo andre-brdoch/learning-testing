@@ -82,7 +82,7 @@ const fetchWeather = async (): Promise<void> => {
     return {
       temperature: temperatures[i],
       cloudcover: cloudcovers[i],
-      date: new Date(dates[i]),
+      dates: new Date(dates[i]),
     };
   });
 };
