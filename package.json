@@ -5,7 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint --ext .js,.ts,.vue ."
+    "lint": "eslint --ext .js,.ts,.vue --ignore-path .gitignore .",
+    "lint-fix": "yarn lint --fix",
+    "prettier": "prettier --ignore-path .gitignore .",
+    "format": "yarn prettier --write",
+    "check-format": "yarn prettier --list-different",
+    "check-types": "tsc",
+    "validate": "yarn check-types && yarn lint && yarn check-format"
   },
   "dependencies": {
     "autoprefixer": "^10",
