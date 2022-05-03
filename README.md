@@ -1,12 +1,13 @@
 # Learning Testing
 
-Playground to learn about everything related to testing in Javascript. 
+Playground to learn about everything related to testing in Javascript.
 
 ## Goals
 
 I aim to implement the following things:
 
 ### Static Analysis Testing
+
 - [x] linting
 - [x] Typescript
 - [ ] husky & lint-staged
@@ -16,26 +17,26 @@ I aim to implement the following things:
 
 - [ ] Jest config
 - [ ] Different Jest matchers
-    - [ ] Async test
-    - [ ] Setup & teardown
+  - [ ] Async test
+  - [ ] Setup & teardown
 - [ ] Mocks
-    - [ ] Methods
-    - [ ] Classes
-    - [ ] Modules
+  - [ ] Methods
+  - [ ] Classes
+  - [ ] Modules
 - [ ] Snapshots
 - [ ] Code coverage
-    - [ ] Thresholds
-    - [ ] codecov reports
+  - [ ] Thresholds
+  - [ ] codecov reports
 - [ ] watch mode setup
-    - [ ] chrome debugger setup
-    - [ ] jest linting runner
-    - [ ] jest typeahead
+
+  - [ ] chrome debugger setup
+  - [ ] jest linting runner
+  - [ ] jest typeahead
 
 - [ ] Testing library
 - [ ] E2E /w Cypress
 - [ ] MSW
 - [ ] vue-test-utils
-
 
 ## Getting started
 
