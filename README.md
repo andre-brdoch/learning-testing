@@ -10,8 +10,8 @@ I aim to implement the following things:
 
 - [x] linting
 - [x] Typescript
-- [ ] husky & lint-staged
-- [ ] Run on CI
+- [x] husky & lint-staged to run all checks automatically when committing
+- [x] Run on CI
 
 ### Jest
 
