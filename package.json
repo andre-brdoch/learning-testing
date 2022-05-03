@@ -41,6 +41,7 @@
     "vue-tsc": "^0.34.11"
   },
   "lint-staged": {
+    "*.{js,ts,vue}": "eslint --cache --fix",
     "*": "prettier --write"
   }
 }
