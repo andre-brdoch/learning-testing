@@ -1,7 +1,0 @@
-{
-  "*.+(js|json|ts|vue)": [
-    "eslint",
-    "prettier --write",
-    "git add"
-  ]
-}
