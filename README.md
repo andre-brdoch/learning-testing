@@ -34,6 +34,7 @@ I aim to implement the following things:
 - [ ] Testing library
 - [ ] E2E /w Cypress
 - [ ] MSW
+- [ ] vue-test-utils
 
 
 ## Getting started

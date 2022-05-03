@@ -21,5 +21,6 @@ module.exports = {
   rules: {
     'no-undef': 0,
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/no-unused-vars': 2,
   },
 };
