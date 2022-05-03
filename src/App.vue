@@ -39,4 +39,5 @@
 import formatDate from 'date-fns/format';
 import WeatherCard from './components/WeatherCard.vue';
 import WeatherData from './components/WeatherData.vue';
+console.log('test');
 </script>
