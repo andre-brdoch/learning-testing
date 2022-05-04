@@ -1,7 +1,3 @@
 {
-  "*.{js,json,ts,vue,md,yml,html}": [
-    "eslint --cache --fix",
-    "prettier --write",
-    "jest --findRelatedTests"
-  ]
+  "*.{js,json,ts,vue,md,yml,html}": ["jest --findRelatedTests"]
 }
