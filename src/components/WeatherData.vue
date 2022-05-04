@@ -26,17 +26,9 @@
 </template>
 
 <script lang="ts" setup>
-import axios from 'axios';
+import { fetchWeather } from '../assets/weather';
 import { onMounted, ref, watch } from 'vue';
 import { computed } from '@vue/reactivity';
-
-interface ApiPayload {
-  hourly: {
-    cloudcover: number[];
-    temperature_2m: number[];
-    time: string[];
-  };
-}
 
 const locations = ref<City[]>([
   { lat: 55.70584, long: 13.19321, name: 'Lund' },
@@ -53,11 +45,6 @@ const coordinates = computed((): Coordinates | undefined => {
   if (!city) return undefined;
   return { lat: city.lat, long: city.long };
 });
-const weatherEndpoint = computed((): string | undefined => {
-  if (!coordinates.value) return undefined;
-  const { lat, long } = coordinates.value;
-  return `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=Europe%2FBerlin&hourly=temperature_2m,cloudcover`;
-});
 const slotData = computed(() => {
   const { lat, long } = coordinates.value || {};
   return {
@@ -68,25 +55,11 @@ const slotData = computed(() => {
   };
 });
 
-const fetchWeather = async (): Promise<void> => {
-  if (!weatherEndpoint.value) return;
-  const response = await axios(weatherEndpoint.value);
-  const data: ApiPayload = response.data;
-
-  weatherByHours.value = Array.from(Array(24).keys()).map(i => {
-    const {
-      temperature_2m: temperatures,
-      cloudcover: cloudcovers,
-      time: dates,
-    } = data.hourly;
-    return {
-      temperature: temperatures[i],
-      cloudcover: cloudcovers[i],
-      date: new Date(dates[i]),
-    };
-  });
+const fetchWeatherIfCoordinates = async (): Promise<void> => {
+  if (!coordinates.value) return;
+  weatherByHours.value = await fetchWeather(coordinates.value);
 };
 
-onMounted(fetchWeather);
-watch(weatherEndpoint, fetchWeather);
+onMounted(fetchWeatherIfCoordinates);
+watch(coordinates, fetchWeatherIfCoordinates);
 </script>
