@@ -10,6 +10,9 @@ I aim to implement the following things:
 
 - [x] linting
 - [x] Typescript
+  - [x] type, in iterface
+  - [x] generics
+  - [ ] function overloading
 - [x] husky & lint-staged to run all checks automatically when committing
 - [x] Run on CI
 
@@ -27,11 +30,11 @@ I aim to implement the following things:
 - [ ] Code coverage
   - [ ] Thresholds
   - [ ] codecov reports
-- [ ] watch mode setup
+- [x] watch mode setup
 
-  - [ ] chrome debugger setup
-  - [ ] jest linting runner
-  - [ ] jest typeahead
+  - [x] chrome debugger setup
+  - [ ] jest runners
+  - [ ] watch plugins
 
 - [ ] Testing library
 - [ ] E2E /w Cypress
@@ -51,3 +54,11 @@ Start development server:
 ```bash
 yarn serve
 ```
+
+## Interesting lessons learned
+
+### Jest `--watch` mode
+
+- how to run
+- debugger
+- watch-plugins
