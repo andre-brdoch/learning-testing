@@ -6,9 +6,5 @@ module.exports = {
   transform: {
     '^.+\\.vue$': '@vue/vue3-jest',
   },
-  watchPlugins: [
-    'jest-watch-select-projects',
-    'jest-watch-typeahead/filename',
-    'jest-watch-typeahead/testname',
-  ],
+  watchPlugins: ['jest-watch-select-projects', 'jest-watch-typeahead/filename'],
 };
