@@ -5,6 +5,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'vue', 'jsx', 'json', 'ts', 'tsx'],
   transform: {
     '^.+\\.vue$': '@vue/vue3-jest',
+    '^.+\\.[t|j]sx?$': 'babel-jest',
   },
   watchPlugins: ['jest-watch-select-projects', 'jest-watch-typeahead/filename'],
 };
