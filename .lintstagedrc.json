@@ -1,4 +1,7 @@
 {
-  "*.{js,ts,vue}": "eslint --cache --fix",
-  "*.{js,json,ts,vue,md,yml}": "prettier --write"
+  "*.{js,json,ts,vue,md,yml,html}": [
+    "eslint --cache --fix",
+    "prettier --write",
+    "jest --findRelatedTests"
+  ]
 }
