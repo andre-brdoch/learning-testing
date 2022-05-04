@@ -2434,7 +2434,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:5.22.0":
+"@typescript-eslint/utils@npm:5.22.0, @typescript-eslint/utils@npm:^5.10.0":
   version: 5.22.0
   resolution: "@typescript-eslint/utils@npm:5.22.0"
   dependencies:
@@ -5408,6 +5408,23 @@ __metadata:
   bin:
     eslint-config-prettier: bin/cli.js
   checksum: 0d0f5c32e7a0ad91249467ce71ca92394ccd343178277d318baf32063b79ea90216f4c81d1065d60f96366fdc60f151d4d68ae7811a58bd37228b84c2083f893
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-jest@npm:^26.1.5":
+  version: 26.1.5
+  resolution: "eslint-plugin-jest@npm:26.1.5"
+  dependencies:
+    "@typescript-eslint/utils": ^5.10.0
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": ^5.0.0
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+    jest:
+      optional: true
+  checksum: 727487c6d0cc4aa66f8209fc187a2f4eb56ffea6569dacb04bb1e3272221d6238460fb967a12074acac50b0b545d2190c697bad64ebc6c8bdd4e8f3cc66d5a68
   languageName: node
   linkType: hard
 
@@ -11372,6 +11389,7 @@ __metadata:
     date-fns: ^2.28.0
     eslint: ^8.14.0
     eslint-config-prettier: ^8.5.0
+    eslint-plugin-jest: ^26.1.5
     eslint-plugin-vue: ^8.7.1
     husky: ^7.0.4
     jest: ^28.0.3

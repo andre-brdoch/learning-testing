@@ -22,4 +22,14 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/no-unused-vars': 2,
   },
+  overrides: [
+    {
+      files: ['**/*.test.js'],
+      plugins: ['jest'],
+      extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+      rules: {
+        'jest/expect-expect': 2,
+      },
+    },
+  ],
 };
