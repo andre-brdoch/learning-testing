@@ -3,7 +3,12 @@ const { getWeather } = require('./weather.ts');
 
 jest.mock('axios');
 
-describe('getWeather', () => {
+afterEach(() => {
+  // reset axios mock
+  axios.mockClear();
+});
+
+describe('getWeather()', () => {
   test('Returns the weather when provided valid coordinates', async () => {
     const temperature = 24;
     const cloudcover = 50;
@@ -16,7 +21,7 @@ describe('getWeather', () => {
         time: [date],
       },
     };
-    // mock axios
+    // mock axios resolve value
     axios.mockResolvedValue({ data: weather });
 
     const data = await getWeather({ lat: 0, long: 0 });
@@ -26,15 +31,24 @@ describe('getWeather', () => {
     });
   });
 
-  test('Throws an error when provided invalid coordinates', async () => {
-    // mock failed axios request
-    axios.mockRejectedValue(new Error('AxiosError'));
-    return expect(getWeather({ lat: 666, long: 666 })).rejects.toThrow();
+  test('Throws an error when provided invalid coordinates without doing an HTTP request', async () => {
+    await expect(getWeather({ lat: 666, long: 666 })).rejects.toThrow();
+    // validate that no axios call was made
+    expect(axios.mock.calls).toHaveLength(0);
   });
 
-  // test('Throws an error when provided a valid city name', async () => {
+  test('Throws an "AxiosError" when axios request fails', async () => {
+    // mock failed axios request
+    axios.mockRejectedValue(new Error('AxiosError'));
+    return expect(getWeather({ lat: 0, long: 0 })).rejects.toThrow(
+      'AxiosError'
+    );
+  });
+
+  // test('Returns the weather when provided a valid city name', async () => {
   //   //
   // });
+
   // test('Throws an error when provided an invalid city name', async () => {
   //   //
   // });

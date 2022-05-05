@@ -13,8 +13,11 @@ interface ApiPayload {
 
 export async function getWeather(coordinates: Coordinates): Promise<Weather> {
   const { lat, long } = coordinates;
-  const endpoint = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${long}&timezone=Europe%2FBerlin&hourly=temperature_2m,cloudcover`;
+  if (lat > 90 || long > 90 || lat < -90 || long < -90) {
+    throw new Error('Invalid coordinates');
+  }
 
+  const endpoint = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${long}&timezone=Europe%2FBerlin&hourly=temperature_2m,cloudcover`;
   const response = await axios(endpoint);
   const data: ApiPayload = response.data;
 
