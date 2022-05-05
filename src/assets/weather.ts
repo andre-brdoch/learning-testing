@@ -6,18 +6,22 @@ interface ApiPayload {
     temperature_2m: number[];
     time: string[];
   };
+  current_weather: {
+    temperature: number;
+  };
 }
 
-export const fetchWeather = async (
-  coordinates: Coordinates
-): Promise<WeatherByHour[]> => {
+export async function getWeather(coordinates: Coordinates): Promise<Weather> {
   const { lat, long } = coordinates;
-  const endpoint = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&timezone=Europe%2FBerlin&hourly=temperature_2m,cloudcover`;
+  const endpoint = `https://api.open-meteo.com/v1/forecast?current_weather=true&latitude=${lat}&longitude=${long}&timezone=Europe%2FBerlin&hourly=temperature_2m,cloudcover`;
 
   const response = await axios(endpoint);
   const data: ApiPayload = response.data;
 
-  return Array.from(Array(24).keys()).map(i => {
+  const current = {
+    temperature: data.current_weather.temperature,
+  };
+  const hourly = data.hourly.temperature_2m.map((temp, i) => {
     const {
       temperature_2m: temperatures,
       cloudcover: cloudcovers,
@@ -29,4 +33,8 @@ export const fetchWeather = async (
       date: new Date(dates[i]),
     };
   });
-};
+  return {
+    hourly,
+    current,
+  };
+}

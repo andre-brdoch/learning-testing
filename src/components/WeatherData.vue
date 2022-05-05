@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { fetchWeather } from '../assets/weather';
+import { getWeather } from '../assets/weather';
 import { onMounted, ref, watch } from 'vue';
 import { computed } from '@vue/reactivity';
 
@@ -57,7 +57,8 @@ const slotData = computed(() => {
 
 const fetchWeatherIfCoordinates = async (): Promise<void> => {
   if (!coordinates.value) return;
-  weatherByHours.value = await fetchWeather(coordinates.value);
+  const weather = await getWeather(coordinates.value);
+  weatherByHours.value = weather.hourly;
 };
 
 onMounted(fetchWeatherIfCoordinates);

@@ -9,8 +9,16 @@ interface City extends Coordinates {
   name: CityName;
 }
 
-interface WeatherByHour {
+interface CurrentWeather {
   temperature: number;
+}
+
+interface WeatherByHour extends CurrentWeather {
   cloudcover: number;
   date: Date;
+}
+
+interface Weather {
+  current: CurrentWeather;
+  hourly: WeatherByHour[];
 }
